@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const Alert = () => {
+export const Alert = ({forAlert1}) => {
   return (
-    <div><p>paseee ctm</p></div>
+    <>
+      <p>{forAlert1}</p>
+    </>
   )
 }

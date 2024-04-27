@@ -1,12 +1,11 @@
 import { Registro } from './components/Registro'
 import './App.css'
 
-function App() {
+export const App = () => {
   return (
-    <main className=' col align-items-center'>
+    <div className='col align-items-center'>
           <Registro />
-    </main>
+    </div>
   )
 }
-
 export default App

@@ -3,8 +3,24 @@ import Form  from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
-export const Formulario = () => {
+export const Formulario = (forAlert) => {
 
+  const CheckData = (e ) => {
+    e.preventDefault()
+    const validar = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
+    if(datos.nombre == '' || datos.email == '' || datos.password == '' || datos.confirmPassword == '') {
+      forAlert 
+      return
+    } else if(!validar.test(datos.email)){
+      console.log('escribe bien el correo po wn')
+      return
+    }else if (datos.password !== datos.confirmPassword){
+      console.log('escribiste mal la caga de contraseña')
+      return
+    }else {
+      console.log('bien')
+    }return
+  }
 
   const [datos, setDatos] = useState({
     nombre: '',
@@ -14,15 +30,14 @@ export const Formulario = () => {
   })
 
   const handleInputChange = (event) => {
-    console.log(event.target.value)
-     setDatos({
-       ...datos,
-       [event.target.name] : event.target.value
-     })
-  }
-
+    setDatos({
+      ...datos,
+      [event.target.name] : event.target.value
+    })
+ }
+ 
   return (
-      <Form className='d-grid gap-2'>
+      <Form className='d-grid gap-2' onSubmit={CheckData} >
             <Form.Group className='mb-1' controlId='exampleForm.ControlInput1' onChange={handleInputChange}>
               <Form.Control type='text' placeholder='Nombre' name='nombre' />
             </Form.Group>
@@ -35,7 +50,7 @@ export const Formulario = () => {
             <Form.Group className='mb-1' controlId='exampleForm.ControlInput1' onChange={handleInputChange}>
               <Form.Control type='password' placeholder='confirma tu contraseña' name='confirmPassword' />
             </Form.Group>
-            <Button variant="success">Registrarse</Button>{' '}
+            <Button variant="success" type='submit'>Registrarse</Button>{' '}
       </Form>
   )
 }
