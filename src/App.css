@@ -1,0 +1,12 @@
+.border{
+    border: 2px solid black;
+    border-radius: 10%;
+    max-width: 290px;
+    background-color: #fff;
+}
+
+#priority{
+    background-color: #73d873;
+}
+
+/* Nota: ya que bootstrap en el body sus propias propiedades, tome la desicion de cambiarlo manualmente mediante este ID priority. */
