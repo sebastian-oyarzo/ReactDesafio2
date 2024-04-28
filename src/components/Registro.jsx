@@ -1,11 +1,18 @@
+import React, { useState } from 'react'
 import SocialButton from './SocialButton'
 import { Formulario } from './Formulario'
-import { Alert } from './Alert'
+import { Alert1 } from './Alert1'
 import { Container, Row, Col } from 'react-bootstrap'
 import './SocialButton.css'
 
 
 export const Registro = () => {
+  const [forAlert, setForAlert ,] = useState('')
+
+    const formAlert = (mensaje) => {
+      setForAlert(mensaje)
+    }
+
   return (
     <Container fluid className='border mt-4 p-4'  >
         <Row>
@@ -26,10 +33,10 @@ export const Registro = () => {
           <p className='container text-center mt-3 small'>O usa tu email para registrarte</p>
         </Row>
         <Row>
-              <Formulario />
+              <Formulario formAlert={formAlert}/>
         </Row>
-        <Row>
-              <Alert/>
+        <Row >
+              <Alert1 forAlert={forAlert}/>
         </Row>
     </Container>
 

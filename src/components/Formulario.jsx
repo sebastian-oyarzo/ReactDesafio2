@@ -1,24 +1,23 @@
 import React, { useState } from 'react'
-import Form  from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import Form  from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
+export const Formulario = ({formAlert}) => {
 
-export const Formulario = (forAlert) => {
-
-  const CheckData = (e ) => {
+  const CheckData = (e) => {
     e.preventDefault()
     const validar = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/
     if(datos.nombre == '' || datos.email == '' || datos.password == '' || datos.confirmPassword == '') {
-      forAlert 
-      return
+      return  formAlert('Todos los campos son obligatorios')
+
     } else if(!validar.test(datos.email)){
-      console.log('escribe bien el correo po wn')
+      formAlert('Esa direccion de correo no es valida')
       return
     }else if (datos.password !== datos.confirmPassword){
-      console.log('escribiste mal la caga de contraseña')
+      formAlert('Las contraseñas no coinciden')
       return
     }else {
-      console.log('bien')
+      formAlert('Registro exitoso')
     }return
   }
 
@@ -35,7 +34,8 @@ export const Formulario = (forAlert) => {
       [event.target.name] : event.target.value
     })
  }
- 
+
+
   return (
       <Form className='d-grid gap-2' onSubmit={CheckData} >
             <Form.Group className='mb-1' controlId='exampleForm.ControlInput1' onChange={handleInputChange}>
